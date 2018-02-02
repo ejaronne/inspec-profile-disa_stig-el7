@@ -1,3 +1,7 @@
+MAX_REPEAT = attribute('max_repeat', default: '2',
+description: 'The maximum number of repeating characters that can occur
+when a password is changed.')
+
 # encoding: utf-8
 #
 =begin
@@ -61,6 +65,6 @@ to have the required value):
 maxrepeat = 2"
 
   describe parse_config_file("/etc/security/pwquality.conf") do
-    its('maxrepeat.to_i') { should cmp <= 2 }
+    its('maxrepeat.to_i') { should cmp <= MAX_REPEAT }
   end
 end

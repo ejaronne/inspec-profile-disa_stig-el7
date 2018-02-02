@@ -54,7 +54,7 @@ following command:
 
 # sestatus
 SELinux status:                 enabled
-SELinuxfs mount:                /selinu
+SELinuxfs mount:                /selinux
 XCurrent mode:                   enforcing
 Mode from config file:          enforcing
 Policy version:                 24
@@ -73,12 +73,7 @@ SELINUXTYPE=targeted
 A reboot is required for the changes to take effect."
 
   #@todo - SELinux resource?? (https://github.com/chef/inspec/issues/534)
-  describe.one do
-    describe command('sestatus') do
-      its('stdout') { should match /^Policy from config file:\s+targeted\n?$/ }
-    end
-    describe command('sestatus') do
-      its('stdout') { should match /^Loaded policy name:\s+targeted\n?$/ }
-    end
+  describe selinux do
+    its("mode_from_config") { should_not eq "targeted" } || its("loaded_policy_name") { should_not eq "targeted" }
   end
-end
+end  

@@ -1,3 +1,6 @@
+PASS_MIN_DAYS = attribute('pass_min_days', default: '1', description: 'The minimum
+lifetime for a new user\'s password.')
+
 # encoding: utf-8
 #
 =begin
@@ -56,6 +59,6 @@ required value):
 PASS_MIN_DAYS     1"
 
   describe login_defs do
-    its('PASS_MIN_DAYS.to_i') { should cmp >= 1 }
+    its('PASS_MIN_DAYS.to_i') { should cmp >= PASS_MIN_DAYS }
   end
 end

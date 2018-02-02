@@ -1,3 +1,7 @@
+UCREDIT = attribute('ucredit', default: '-1', 
+description: 'The acceptable range of values for ucredit which 
+specifies the number of upper-case characters a password must contain.')
+
 # encoding: utf-8
 #
 =begin
@@ -61,6 +65,6 @@ have the required value):
 ucredit = -1"
 
   describe parse_config_file("/etc/security/pwquality.conf") do
-    its('ucredit') { should match /^-\d+$/ }
+    its('ucredit.to_i') { should cmp <= UCREDIT }
   end
 end

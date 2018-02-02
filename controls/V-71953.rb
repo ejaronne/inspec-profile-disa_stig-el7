@@ -1,3 +1,5 @@
+LOCK_DELAY = attribute('lock_delay', default: '5', description: '.')
+
 # encoding: utf-8
 #
 =begin

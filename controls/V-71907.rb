@@ -1,3 +1,7 @@
+DCREDIT = attribute('dcredit', default: '-1',
+description: 'The acceptable range of values for dcredit which
+specifies the number of numeric characters a password must contain.')
+
 # encoding: utf-8
 #
 =begin
@@ -61,6 +65,6 @@ the required value):
 dcredit = -1"
 
   describe parse_config_file("/etc/security/pwquality.conf") do
-    its('dcredit.to_i') { should cmp < 0 }
+    its('dcredit.to_i') { should cmp <= DCREDIT }
   end
 end

@@ -76,12 +76,7 @@ The package can be reinstalled from a yum repository using the command:
 Alternatively, the package can be reinstalled from trusted media using the command:
 
 # sudo rpm -Uvh <packagename>"
-
-  # @todo - check for host vm device files as mentioned and pass if found
-  describe command('find /dev -context *:device_t:* \( -type c -o -type b\) -printf "%p %Z"') do
-    its('stdout.strip') { should match /^$/ }
+  
+  describe selinux.incorrectly_labeled_files? do
+    it { should eq false }
   end
-  describe command('find /dev -context *:unlabeled_t:* \( -type c -o -type b\) -printf "%p %Z"') do
-    its('stdout.strip') { should match /^$/ }
-  end
-end

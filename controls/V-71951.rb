@@ -1,3 +1,7 @@
+FAIL_DELAY = attribute('fail_delay', default: '4',
+description: 'The number of seconds delay between logon prompts following a failed
+console logon attempt.')
+
 # encoding: utf-8
 #
 =begin
@@ -65,6 +69,6 @@ greater:
 FAIL_DELAY 4"
 
   describe login_defs do
-    its('FAIL_DELAY.to_i') { should cmp >= 4 }
+    its('FAIL_DELAY.to_i') { should cmp >= FAIL_DELAY }
   end
 end

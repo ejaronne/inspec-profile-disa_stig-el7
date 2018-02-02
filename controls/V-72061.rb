@@ -37,7 +37,7 @@ from failures resulting from a file system becoming full or failing."
 
 Check that a file system/partition has been created for \"/var\" with the following
 command:
-
+M
 # grep /var /etc/fstab
 UUID=c274f65f    /var                    ext4    noatime,nobarrier        1 2
 

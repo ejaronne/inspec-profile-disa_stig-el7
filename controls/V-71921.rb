@@ -1,3 +1,7 @@
+ENCRYPT_METHOD = attribute('encrypt_method', default: 'SHA512',
+description: 'The encryption method that be used for protecting the
+shadow file.')
+
 # encoding: utf-8
 #
 =begin
@@ -55,6 +59,6 @@ Add or update the following line in \"/etc/login.defs\":
 ENCRYPT_METHOD SHA512"
 
   describe login_defs do
-    its('ENCRYPT_METHOD') { should cmp "SHA512" }
+    its('ENCRYPT_METHOD') { should cmp ENCRYPT_METHOD }
   end
 end

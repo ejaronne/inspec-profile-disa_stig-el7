@@ -1,3 +1,6 @@
+MIN_LEN = attribute('min_len', default: '15',
+description: 'The minimum number of characters for passwords.')
+
 # encoding: utf-8
 #
 =begin
@@ -61,6 +64,6 @@ have the required value):
 minlen = 15"
 
   describe parse_config_file("/etc/security/pwquality.conf") do
-    its('minlen.to_i') { should cmp >= 15 }
+    its('minlen.to_i') { should cmp >= MIN_LEN }
   end
 end

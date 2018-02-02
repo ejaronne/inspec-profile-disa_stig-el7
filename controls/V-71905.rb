@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+LCREDIT = attribute('lcredit', default: '-1',
+description: 'The acceptable range of values for lcredit which
+specifies the number of lower-case characters a password must contain.')
+
+
 # encoding: utf-8
 #
 =begin
@@ -71,6 +77,6 @@ fail_interval=900 unlock_time=604800
 and run the \"authconfig\" command."
 
   describe parse_config_file("/etc/security/pwquality.conf") do
-    its('lcredit.to_i') { should cmp < 0 }
+    its('lcredit.to_i') { should cmp <= LCREDIT }
   end
 end

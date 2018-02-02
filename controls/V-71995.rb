@@ -1,3 +1,7 @@
+LOGIN_DEF_UMASK = attribute('login_defs_umask', default: '077',
+description: 'The default permissions for all authenticated users.')
+
+
 # encoding: utf-8
 #
 =begin
@@ -58,6 +62,6 @@ Add or edit the line for the \"UMASK\" parameter in \"/etc/login.defs\" file to
 UMASK  077"
 
   describe login_defs do
-    its('UMASK') { should eq '077' }
+    its('UMASK') { should eq LOGIN_DEFS_UMASK }
   end
 end

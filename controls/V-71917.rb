@@ -1,3 +1,7 @@
+MAX_CLASS_REPEAT = attribute('max_class_repeat', default: '4',
+description: 'The maximum number of repeating characters of the same                                             
+character class.')
+
 # encoding: utf-8
 #
 =begin
@@ -61,6 +65,6 @@ to have the required value):
 maxclassrepeat = 4"
 
   describe parse_config_file("/etc/security/pwquality.conf") do
-    its('maxclassrepeat.to_i') { should cmp <= 4 }
+    its('maxclassrepeat.to_i') { should cmp <= MAX_REPEAT_CLASS }
   end
 end

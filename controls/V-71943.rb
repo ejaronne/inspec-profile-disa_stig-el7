@@ -1,3 +1,13 @@
+LOCKOUT_TIME = attribute('lockout_time', default: '604800',
+description: 'The amount of time that an account must be locked out for after
+the specified number of unsuccessful logon attempts.')
+UNSUCCESSFUL_ATTEMPTS = attribute('unsuccessful_attempts', default: '3',
+description: 'The scereensaver lock-delay must be less than or equal to                                                                                                                  
+the specified value.')
+# encoding: utf-8          
+
+# encoding: utf-8          
+
 # encoding: utf-8
 #
 =begin

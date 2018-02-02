@@ -1,3 +1,6 @@
+MAX_DAYS = attribute('max_days', default: '60', description: 'The maximum
+lifetime for existing passwords.')
+
 # encoding: utf-8
 #
 =begin
@@ -50,7 +53,7 @@ lifetime restriction.
     # filtering on non-system accounts (uid >= 1000)
     next unless user(user).uid >= 1000
     describe shadow.users(user) do
-      its('max_days.first.to_i') { should cmp <= 60 }
+      its('max_days.first.to_i') { should cmp <= MAX_DAYS }
     end
   end
 end

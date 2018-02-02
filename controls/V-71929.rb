@@ -1,3 +1,6 @@
+PASS_MAX_DAYS = attribute('pass_max_days', default: '60', description: 'The 
+maximum lifetime of a password.')
+
 # encoding: utf-8
 #
 =begin
@@ -54,6 +57,6 @@ required value):
 PASS_MAX_DAYS     60"
 
   describe login_defs do
-    its('PASS_MAX_DAYS.to_i') { should cmp <= 60 }
+    its('PASS_MAX_DAYS.to_i') { should cmp <= PASS_MAX_DAYS }
   end
 end

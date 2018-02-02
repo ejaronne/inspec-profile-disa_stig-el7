@@ -1,3 +1,7 @@
+OCREDIT = attribute('ocredit', default: '-1',
+description: 'The acceptable range of values for ocredit which 
+specifies the number of special characters a password must contain.')
+
 # encoding: utf-8
 #
 =begin
@@ -55,7 +59,7 @@ ocredit=-1
 
 If the value of \"ocredit\" is not set to a negative value, this is a finding."
   tag "fix": "Configure the operating system to enforce password complexity by
-requiring that at least one special character be used by setting the \"dcredit\"
+requiring that at least one special character be used by setting the \"ocredit\"
 option.
 
 Add the following line to \"/etc/security/pwquality.conf\" (or modify the line to
@@ -64,6 +68,6 @@ have the required value):
 ocredit = -1"
 
   describe parse_config_file("/etc/security/pwquality.conf") do
-    its('ocredit.to_i') { should cmp < 0 }
+    its('ocredit.to_i') { should cmp <= OCREDIT }
   end
 end

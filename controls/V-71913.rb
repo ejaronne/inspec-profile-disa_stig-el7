@@ -1,3 +1,8 @@
+MIN_CLASS = attribute('min_class', default: '4',
+description: 'The acceptable range of values for minclass which 
+specifies the minimum number of character classes that must change
+when a password is changed.')
+
 # encoding: utf-8
 #
 =begin
@@ -60,6 +65,6 @@ to have the required value):
 minclass = 4"
 
   describe parse_config_file("/etc/security/pwquality.conf") do
-    its('minclass.to_i') { should cmp >= 4 }
+    its('minclass.to_i') { should cmp >= MIN_CLASS }
   end
 end

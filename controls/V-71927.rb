@@ -1,3 +1,6 @@
+MIN_DAYS = attribute('min_days', default: '1', description: 'The minimum password
+lifetime for a password.')
+
 # encoding: utf-8
 #
 =begin
@@ -51,7 +54,7 @@ password lifetime:
     # filtering on non-system accounts (uid >= 1000)
     next unless user(user).uid >= 1000
     describe shadow.users(user) do
-      its('min_days.first.to_i') { should cmp >= 1 }
+      its('min_days.first.to_i') { should cmp >= MIN_DAYS }
     end
   end
 end
