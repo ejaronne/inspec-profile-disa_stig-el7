@@ -1,3 +1,8 @@
+IDLE_ACTIVATION_ENABLED = attribute('idle_activation_enabled', default: 'true',
+description: 'The operating system must initiate a session lock for the 
+screensaver after a period of inactivity for graphical user interfaces.')
+
+
 # encoding: utf-8
 #
 =begin

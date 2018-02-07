@@ -1,3 +1,6 @@
+NULLOK_ENABLED = attribute('nullok_enabled', default: 'true', description: 'Whether or
+not the system is restricted from having accounts with blank or null passwords.')
+
 # encoding: utf-8
 #
 =begin

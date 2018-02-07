@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+LOCK_ENABLED = attribute('lock_enabled', default: 'true',
+description: 'The operating system must enable a user 
+session lock until that user re-establishes access using 
+established identification and authentication procedures.')
+
 # encoding: utf-8
 #
 =begin
@@ -98,7 +104,7 @@ Update the system databases:
 Users must log out and back in again before the system-wide settings take effect."
 
   describe parse_config_file('/etc/dconf/db/local.d/00-screensaver') do
-    its('lock-enabled') { should cmp 'true' }
+    its('lock-enabled') { should cmp LOCK_ENABLED }
   end
   only_if { package('gnome-desktop3').installed? }
 end

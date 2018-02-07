@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+IDLE_DELAY = attribute('idle_delay', default: '900',
+description: 'The operating system must initiate a 
+screensaver after a 15-minute period of inactivity 
+for graphical user interfaces.')
+
 # encoding: utf-8
 #
 =begin
@@ -93,8 +99,8 @@ Update the system databases:
 
 Users must log out and back in again before the system-wide settings take effect."
 
-  describe command("grep -i idle-delay /etc/dconf/db/local.d/*") do
-    its('stdout') { should match /^idle-delay=unit32 (900|[0-8]\d\d|\d\d|\d|)\n?$/ }
+  describe command("grep -Po '(?<=^idle-delay=)[0-9]+$' /etc/dconf/db/local.d/*") do
+    its('stdout') { should >= IDLE_DELAY }
   end
   only_if { package('gnome-desktop3').installed? }
 end

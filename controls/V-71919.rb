@@ -1,3 +1,7 @@
+PASSSWORD_ENCRYPTION_ALGORITHM = attribute('password_encryption_algorithm', 
+default: 'sha512', description: 'The encryption algorithm that should be used
+to encrypt passwords.')
+
 # encoding: utf-8
 #
 =begin
@@ -56,7 +60,7 @@ password sufficient pam_unix.so sha512
 
 and run the \"authconfig\" command."
 
-  describe file("/etc/pam.d/system-auth-ac") do
-    its('content') { should match /^password\s+sufficient\s+pam_unix.so .*sha512.*$/ }
+  describe command("grep -Po '(?<=^password    sufficient    pam_unix.so )(.)+' /etc/pam.d/system-auth-ac | grep -Po '(md5|bigcrypt|sha256|sha512|blowfish)'") do
+    its('content') { should cmp PASSWORD_ENCRYPTION_ALGORITHM }
   end
 end

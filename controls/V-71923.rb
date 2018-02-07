@@ -1,3 +1,7 @@
+CRYPT_STYLE = attribute('crypt_style', default: 'sha512', description: 'The 
+encryption algorithm that should be used to encrypt passwords when new passwords
+are created.')
+
 # encoding: utf-8
 #
 =begin
@@ -55,7 +59,7 @@ Add or update the following line in \"/etc/libuser.conf\" in the [defaults] sect
 
 crypt_style = sha512"
 
-  describe command("cat /etc/libuser.conf | grep -i sha512") do
-    its('stdout.strip') { should match /^crypt_style = sha512$/ }
+  describe command("grep -i 'crypt_style' /etc/libuser.conf | cut -d'=' -f2 | grep -Po '(des|md5|blowfish|sha256|sha512)'") do
+    its('stdout.strip') { should cmp CRYPT_STYLE }
   end
 end
