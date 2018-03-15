@@ -1,3 +1,7 @@
+SYSTEM_ACTIVITY_TIMEOUT = attribute('system_activity_timeout', default: '600',
+description: 'The length of inactivity from the user in which the network 
+connections associated with a session in terminated.')
+
 # encoding: utf-8
 #
 =begin
@@ -72,6 +76,6 @@ TMOUT=600
 The SSH service must be restarted for changes to take effect."
 
   describe parse_config_file('/etc/bashrc') do
-    its('TMOUT.to_i') { should cmp <= 600 }
+    its('TMOUT.to_i') { should cmp <= SYSTEM_INACTIVITY_TIMEOUT }
   end
 end

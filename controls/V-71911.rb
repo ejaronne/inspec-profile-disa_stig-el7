@@ -1,3 +1,7 @@
+DIFOK = attribute('difok', default: '8', description: 'The acceptable range of 
+values for difok which specifies the maximum number of characters that must 
+change when a password is changed.')
+
 # encoding: utf-8
 #
 =begin
@@ -61,6 +65,6 @@ have the required value):
 difok = 8"
 
   describe parse_config_file("/etc/security/pwquality.conf") do
-    its('difok.to_i') { should cmp >= 8 }
+    its('difok.to_i') { should cmp >= DIFOK }
   end
 end

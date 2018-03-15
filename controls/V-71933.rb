@@ -1,3 +1,6 @@
+MIN_REUSE_GENERATIONS = attribute('min_reuse_generations', default: '5',
+description: 'The minimum number of generations before a password can be
+reused.')
 # encoding: utf-8
 #
 =begin
@@ -57,6 +60,7 @@ password sufficient pam_unix.so use_authtok sha512 shadow remember=5
 
 and run the \"authconfig\" command."
 
+#change cmp >= 5
   describe file("/etc/pam.d/system-auth-ac") do
     its('content') { should match /^password\s+sufficient\s+pam_unix.so .*remember=(\d\d+|[5-9]).*\n?$/ }
   end

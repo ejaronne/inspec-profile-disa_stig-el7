@@ -1,4 +1,14 @@
-# encoding: utf-8
+UNSUCCESSFUL_ATTEMPTS = attribute('unsuccessful_attempts', default: '3',
+description: 'The scereensaver lock-delay must be less than or equal to the 
+specified value.')
+FAIL_INTERVAL = attribute('fail_interval', default: '900',
+description: 'The amount of time that an account must be locked out for after 
+the specified number of unsuccessful logon attempts.')
+LOCKOUT_TIME = attribute('lockout_time', default: '604800',
+description: 'The amount of time that an account must be locked out for after
+the specified number of unsuccessful logon attempts.')
+
+# encoding: utf-8          
 #
 =begin
 -----------------
@@ -67,15 +77,29 @@ auth        [default=die]  pam_faillock.so authfail audit deny=3 even_deny_root
 fail_interval=900 unlock_time=604800
 
 and run the \"authconfig\" command."
-
-  auth_file = file('/etc/pam.d/password-auth-ac')
-
-  only_if { auth_file.exist? }
-
-  describe auth_file do
-    its('content') { should match(/^auth\s+required\s+pam_faillock.so\s.*unlock_time=604800/) }
+  
+  only_if { file('/etc/pam.d/password-auth-ac').exist? }
+  
+  describe command("grep -Po '^auth\s+required\s+pam_faillock.so.*$' /etc/pam.d/system-auth-ac-1 | grep -Po '(?<=pam_faillock.so).*$' | grep -Po 'deny\s*=\s*[0-9]+' | cut -d '=' -f2") do
+    its('content') { should <= UNSUCCESSFUL_ATTEMPTS }
   end
-  describe auth_file do
-    its('content') { should match(/^auth\s+\[default=die\]\s+pam_faillock.so\s.*unlock_time=604800/) }
+  
+  describe command("grep -Po '^auth\s+required\s+pam_faillock.so.*$' /etc/pam.d/system-auth-ac-1 | grep -Po '(?<=pam_faillock.so).*$' | grep -Po 'fail_interval\s*=\s*[0-9]+' | cut -d '=' -f2") do
+    its('content') { should <= FAIL_INTERVAL }
   end
+  
+  describe command("grep -Po '^auth\s+required\s+pam_faillock.so.*$' /etc/pam.d/system-auth-ac-1 | grep -Po '(?<=pam_faillock.so).*$' | grep -Po 'unlock_time\s*=\s*[0-9]+' | cut -d '=' -f2") do
+    its('content') { should >= LOCKOUT_TIME }
+  end
+  
+  describe command("grep -Po '^auth\s+\[default=die\]\s+pam_faillock.so.*$' /etc/pam.d/system-auth-ac-1 | grep -Po '(?<=pam_faillock.so).*$' | grep -Po 'deny\s*=\s*[0-9]+' | cut -d '=' -f2") do
+    its('content') { should <= UNSUCCESSFUL_ATTEMPTS }
+  end
+  
+  describe command("grep -Po '^auth\s+\[default=die\]\s+pam_faillock.so.*$' /etc/pam.d/system-auth-ac-1 | grep -Po '(?<=pam_faillock.so).*$' | grep -Po 'fail_interval\s*=\s*[0-9]+' | cut -d '=' -f2") do
+    its('content') { should <= FAIL_INTERVAL }
+  end
+  describe command("grep -Po '^auth\s+\[default=die\]\s+pam_faillock.so.*$' /etc/pam.d/system-auth-ac-1 | grep -Po '(?<=pam_faillock.so).*$' | grep -Po 'unlock_time\s*=\s*[0-9]+' | cut -d '=' -f2") do
+    its('content') { should >= LOCKOUT_TIME }
+  end 
 end

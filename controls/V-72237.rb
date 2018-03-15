@@ -1,3 +1,6 @@
+CLIENT_ALIVE_INTERVAL = attribute('client_alive_interval', default: '600',
+description: "Value expected for ClientAliveInterval in sshd_config")
+
 # encoding: utf-8
 #
 =begin
@@ -19,12 +22,6 @@ Source: STIG.DOD.MIL
 uri: http://iase.disa.mil
 -----------------
 =end
-
-client_alive_interval = attribute(
-  'client_alive_interval',
-  default: '600',
-  description: "Value expected for ClientAliveInterval in sshd_config"
-)
 
 control "V-72237" do
   title "All network connections associated with SSH traffic must terminate at the
@@ -82,6 +79,6 @@ ClientAliveInterval 600
 The SSH service must be restarted for changes to take effect."
 
   describe sshd_config do
-    its('ClientAliveInterval') { should cmp client_alive_interval }
+    its('ClientAliveInterval') { should cmp CLIENT_ALIVE_INTERVAL }
   end
 end
