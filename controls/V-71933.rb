@@ -61,7 +61,7 @@ password sufficient pam_unix.so use_authtok sha512 shadow remember=5
 and run the \"authconfig\" command."
 
 #change cmp >= 5
-  describe file("/etc/pam.d/system-auth-ac") do
-    its('content') { should match /^password\s+sufficient\s+pam_unix.so .*remember=(\d\d+|[5-9]).*\n?$/ }
+  describe command("grep -Po '^password\s+sufficient\s+pam_unix.so.*$' /etc/pam.d/system-auth-ac-1 | grep -Po '(?<=pam_unix.so).*$' | grep -Po 'remember\s*=\s*[0-9]+' | cut -d '=' -f2") do
+    its('content') { should >= MIN_REUSE_GENERATIONS }
   end
 end
