@@ -106,7 +106,14 @@ By using this IS (which includes any device attached to this IS), you consent to
 
     -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.                                                                                   
                                                                                          
-    -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal    \"I've read & consent to terms in IS user agreem't.\" Satisfies: SRG-OS-000023-GPOS-00006, SRG-OS-000024-GPOS-00007, SRG-OS-000228-GPOS-0008."
+    -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"
+
+    Use the following verbiage for operating systems that have severe limitations on the number of characters that can be displayed in the banner:
+
+    \"I've read & consent to terms in IS user agreem't.\"
+   
+    Satisfies: SRG-OS-000023-GPOS-00006, SRG-OS-000024-GPOS-00007, SRG-OS-000228-GPOS-0008.
+  "
   impact 0.5
   tag "severity": "medium"
   tag "gtitle": "SRG-OS-000023-GPOS-00006"
