@@ -62,6 +62,6 @@ Note: The example will be for the smithj user, who has a home directory of
     findings = findings + command("find #{user_info.home} -name '.*' -not -user #{user_info.username} -a -not -user root").stdout.split("\n")
   end
   describe findings do
-    its ('length') { should == 0 }
+    it { should be_empty }
   end
 end
