@@ -61,6 +61,6 @@ Note: The example will be for the user \"smithj\".
     findings = findings + command("find #{user_info.home} -maxdepth 0 -perm /027").stdout.split("\n") 
   end 
   describe findings do 
-    its ('length') { should == 0 } 
+    it { should be_empty } 
   end 
 end
