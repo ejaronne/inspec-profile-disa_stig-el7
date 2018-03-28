@@ -82,6 +82,6 @@ document the configuration to boot from removable media with the ISSO."
       subject.delete("/boot/grub2/grub.cfg") 
       subject.delete("/boot/efi/EFI/redhat/grub.cfg")
     }
-    its ('length') { should == 0 }
+    it { should be_empty }
   end
 end
