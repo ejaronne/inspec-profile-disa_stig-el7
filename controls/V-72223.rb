@@ -1,7 +1,3 @@
-SYSTEM_ACTIVITY_TIMEOUT = attribute('system_activity_timeout', default: '600',
-description: 'The length of inactivity from the user in which the network 
-connections associated with a session in terminated.')
-
 # encoding: utf-8
 #
 =begin
@@ -23,6 +19,9 @@ Source: STIG.DOD.MIL
 uri: http://iase.disa.mil
 -----------------
 =end
+SYSTEM_ACTIVITY_TIMEOUT = attribute('system_activity_timeout', default: '600',
+description: 'The length of inactivity from the user in which the network
+connections associated with a session in terminated.')
 
 control "V-72223" do
   title "All network connections associated with a communication session must be

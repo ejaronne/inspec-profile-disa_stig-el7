@@ -1,7 +1,3 @@
-BANNER_MESSAGE_ENABLED = attribute('banner_message_enabled', default: 'true',
-description: 'The banner message must display the Standard Mandatory DoD notice
-before granting access.')
-
 # encoding: utf-8
 #
 =begin
@@ -23,6 +19,10 @@ Source: STIG.DOD.MIL
 uri: http://iase.disa.mil
 -----------------
 =end
+
+BANNER_MESSAGE_ENABLED = attribute('banner_message_enabled', default: 'true',
+description: 'The banner message must display the Standard Mandatory DoD notice
+before granting access.')
 
 control "V-71859" do
   title "The operating system must display the Standard Mandatory DoD Notice and

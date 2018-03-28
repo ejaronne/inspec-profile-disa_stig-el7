@@ -1,13 +1,3 @@
-UNSUCCESSFUL_ATTEMPTS_ROOT = attribute('unsuccessful_attempts_root', default: '3',
-description: 'The root account is denied access after the specified number of
-consecutive failed logon attempts.')
-FAIL_INTERVAL_ROOT = attribute('fail_interval_root', default: '900',
-description: 'The interval of time in which the consecutive failed logon
-attempts must occur in order for the root account to be locked out.')
-LOCKOUT_TIME_ROOT = attribute('lockout_time_root', default: '604800',
-description: 'The amount of time that an root account must be locked out for 
-after the specified number of unsuccessful logon attempts.')
-
 # encoding: utf-8
 #
 =begin
@@ -29,6 +19,15 @@ Source: STIG.DOD.MIL
 uri: http://iase.disa.mil
 -----------------
 =end
+UNSUCCESSFUL_ATTEMPTS_ROOT = attribute('unsuccessful_attempts_root', default: '3',
+description: 'The root account is denied access after the specified number of
+consecutive failed logon attempts.')
+FAIL_INTERVAL_ROOT = attribute('fail_interval_root', default: '900',
+description: 'The interval of time in which the consecutive failed logon
+attempts must occur in order for the root account to be locked out.')
+LOCKOUT_TIME_ROOT = attribute('lockout_time_root', default: '604800',
+description: 'The amount of time that an root account must be locked out for
+after the specified number of unsuccessful logon attempts.')
 
 control "V-71945" do
   title "If three unsuccessful root logon attempts within 15 minutes occur the

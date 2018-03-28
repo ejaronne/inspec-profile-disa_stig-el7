@@ -1,6 +1,3 @@
-MIN_LEN = attribute('min_len', default: '15',
-description: 'The minimum number of characters for passwords.')
-
 # encoding: utf-8
 #
 =begin
@@ -22,6 +19,8 @@ Source: STIG.DOD.MIL
 uri: http://iase.disa.mil
 -----------------
 =end
+MIN_LEN = attribute('min_len', default: '15',
+description: 'The minimum number of characters for passwords.')
 
 control "V-71935" do
   title "Passwords must be a minimum of 15 characters in length."

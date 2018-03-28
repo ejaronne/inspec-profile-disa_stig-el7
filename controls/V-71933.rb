@@ -1,6 +1,3 @@
-MIN_REUSE_GENERATIONS = attribute('min_reuse_generations', default: '5',
-description: 'The minimum number of generations before a password can be
-reused.')
 # encoding: utf-8
 #
 =begin
@@ -22,6 +19,9 @@ Source: STIG.DOD.MIL
 uri: http://iase.disa.mil
 -----------------
 =end
+MIN_REUSE_GENERATIONS = attribute('min_reuse_generations', default: '5',
+description: 'The minimum number of generations before a password can be
+reused.')
 
 control "V-71933" do
   title "Passwords must be prohibited from reuse for a minimum of five generations."

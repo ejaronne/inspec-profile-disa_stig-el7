@@ -1,6 +1,3 @@
-CLIENT_ALIVE_INTERVAL = attribute('client_alive_interval', default: '600',
-description: "Value expected for ClientAliveInterval in sshd_config")
-
 # encoding: utf-8
 #
 =begin
@@ -22,6 +19,8 @@ Source: STIG.DOD.MIL
 uri: http://iase.disa.mil
 -----------------
 =end
+CLIENT_ALIVE_INTERVAL = attribute('client_alive_interval', default: '600',
+description: "Value expected for ClientAliveInterval in sshd_config")
 
 control "V-72237" do
   title "All network connections associated with SSH traffic must terminate at the

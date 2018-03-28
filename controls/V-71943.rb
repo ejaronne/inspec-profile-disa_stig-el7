@@ -1,13 +1,3 @@
-UNSUCCESSFUL_ATTEMPTS = attribute('unsuccessful_attempts', default: '3',
-description: 'The account is denied access after the specified number of                                                                          
-consecutive failed logon attempts.')
-FAIL_INTERVAL = attribute('fail_interval', default: '900',
-description: 'The interval of time in which the consecutive failed logon                                                                          
-attempts must occur in order for the account to be locked out.')
-LOCKOUT_TIME = attribute('lockout_time', default: '604800',
-description: 'The amount of time that an account must be locked out for                                                                           
-after the specified number of unsuccessful logon attempts.')
-
 # encoding: utf-8          
 #
 =begin
@@ -29,6 +19,15 @@ Source: STIG.DOD.MIL
 uri: http://iase.disa.mil
 -----------------
 =end
+UNSUCCESSFUL_ATTEMPTS = attribute('unsuccessful_attempts', default: '3',
+description: 'The account is denied access after the specified number of
+consecutive failed logon attempts.')
+FAIL_INTERVAL = attribute('fail_interval', default: '900',
+description: 'The interval of time in which the consecutive failed logon
+attempts must occur in order for the account to be locked out.')
+LOCKOUT_TIME = attribute('lockout_time', default: '604800',
+description: 'The amount of time that an account must be locked out for
+after the specified number of unsuccessful logon attempts.')
 
 control "V-71943" do
   title "Accounts subject to three unsuccessful logon attempts within 15 minutes
