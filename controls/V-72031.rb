@@ -76,6 +76,6 @@ Note: The example will be for the user smithj, who has a home directory of
     findings = findings + command("find #{user_info.home} -name '.*' -not -gid #{user_info.gid} -not -group root").stdout.split("\n")
   end
   describe findings do
-    its('length') { should == 0 }
+    it { should be_empty }
   end
 end
