@@ -65,6 +65,6 @@ Note: The example will be for the user smithj, who has a home directory of
     end 
   end
   describe findings do  
-    its { should be_empty }  
+    it { should be_empty }  
   end  
 end
