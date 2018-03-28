@@ -82,6 +82,6 @@ Alternatively, the package can be reinstalled from trusted media using the comma
   findings = findings + command('find / -context *:device_t:* -type c -o -type b -printf "%p %Z\n"').stdout.split("\n")
   findings = findings + command('find / -context *:unlabeled_t:* -type c -o -type b -printf "%p %Z\n"').stdout.split("\n")
   describe findings do
-    its ('length') { should == '0' }
+    it { should be_empty }
   end
 end
