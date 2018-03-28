@@ -63,6 +63,6 @@ Note: The example will be for the user smithj, who has a home directory of
     findings = findings + command("find #{user_info.home} -xdev ! -name '.*' -type d -perm /027 -o -type f -perm /133").stdout.split("\n")
   end
   describe findings do
-    its ('length') { should == 0 }
+    it { should be_empty }
   end
 end
