@@ -86,3 +86,4 @@ client_alive_interval: 1800
 
 # V-71965.rb values: (enabled or disabled)
 smart_card_status: 'enabled'
+
